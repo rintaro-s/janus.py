@@ -14,7 +14,7 @@ async def final_test():
     # サーバートークンを使用してクライアント初期化
     client = Client(
         host="http://localhost:8000",
-        token="janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580",
+        JANUS_TOKEN = "token_here",
         use_server_token=True,
         debug=False  # デバッグ出力を無効に
     )

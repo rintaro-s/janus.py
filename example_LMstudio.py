@@ -7,14 +7,14 @@ import sys
 
 # 1. Janusサーバーの情報を設定
 JANUS_HOST = "http://localhost:8000"  # あなたのJanusサーバーのアドレス
-JANUS_TOKEN = "janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580" # 提供されたトークンを設定
+JANUS_TOKEN = "token_here"# 提供されたトークンを設定
 
 # 2. LM StudioのAPIエンドポイントを設定
 LMSTUDIO_API_URL = "http://localhost:1234/v1/chat/completions"
 
 # 3. ★★★【最重要】あなたのJanus上の正確なユーザー名を設定してください ★★★
 # この名前のユーザーからのメッセージにのみ、ボットは応答します。
-HUMAN_USER_NAME = "auth0|68c24d6590607b5acb99a14c"  # 例: "rinta", "Rinta Yamada" などJanusアプリに表示される名前
+HUMAN_USER_NAME = "あなたのユーザー名を設定"  # 例: "rinta", "Rinta Yamada" などJanusアプリに表示される名前
 
 # 4. ボットが応答するチャンネル名を設定
 TARGET_CHANNEL_NAME = "llm妹"

@@ -160,12 +160,4 @@ class Server:
 
 ---
 
-## 🆘 サポート
-
-- 📧 Email: support@janus.com
-- 💬 Discord: [Janus Community](https://discord.gg/janus)
-- 🐛 Issues: [GitHub Issues](https://github.com/janus/janus-sdk/issues)
-
----
-
 **Janus SDKはサーバートークン認証による安全なチャットAPIを提供します。\nREADMEのサンプルコードはすべて実際に動作します。\n未実装機能については今後のアップデートで対応予定です。**

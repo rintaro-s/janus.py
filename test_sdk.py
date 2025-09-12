@@ -17,8 +17,7 @@ async def test_sdk():
     
     # 設定
     JANUS_HOST = "http://localhost:8000"
-    JANUS_TOKEN = "janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580"
-    
+    JANUS_TOKEN = "token_here"
     print("🚀 Janus SDK 動作確認テスト開始")
     print("=" * 50)
     

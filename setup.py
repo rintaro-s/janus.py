@@ -11,7 +11,7 @@ setup(
     description="Discord.py風のJanus API Python SDK",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your-org/janus-sdk",
+    url="https://github.com/rintaro-s/janus.py",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",

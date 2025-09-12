@@ -5,11 +5,11 @@ import requests
 
 # ===== 設定 =====
 JANUS_HOST = "http://localhost:8000"
-JANUS_TOKEN = "janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580"
+JANUS_TOKEN = "token_here"
 AI_CHANNEL_NAME = "webhook"
 
 # 送信先 Discord Webhook（ハードコーディング）
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1415758484128923658/SE1RzDVIDxNCcXjPXS0tMG-fxbqy4en0Em6Tc6m4pAGQxbyK9o3AO7rEW8COUaHBq-aY"
+DISCORD_WEBHOOK_URL = "webhook_url_here"
 
 # ===== Janusクライアント初期化 =====
 client = janus.Client(

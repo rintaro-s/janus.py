@@ -15,7 +15,7 @@ def main():
     # クライアント初期化（サーバートークンを使用）
     client = janus.Client(
         host="http://localhost:8000",  # Janusバックエンドのアドレス
-        token="janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580",
+        token="token_here",
         use_server_token=True,  # サーバートークン認証を有効化
         debug=False  # デバッグモード（必要に応じて）
     )
