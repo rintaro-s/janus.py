@@ -14,7 +14,7 @@ async def final_test():
     # サーバートークンを使用してクライアント初期化
     client = Client(
         host="http://localhost:8000",
-        JANUS_TOKEN = "token_here",
+        JANUS_TOKEN = "janus_c4ce1635dd72153eab29f6c0c87ac7fab67d878a67560f045c0e7ca133559580",
         use_server_token=True,
         debug=False  # デバッグ出力を無効に
     )
@@ -48,6 +48,9 @@ async def final_test():
         # メッセージ履歴取得
         messages = client.get_messages(new_channel.id)
         print(f"   ✅ メッセージ履歴取得: {len(messages)}件")
+        for msg in messages[-3:]:
+            print(f"     {msg.author.display_name} ({msg.author.id}): {msg.content}")
+            print(f"       アイコンURL: {msg.author.avatar_url}")
         print()
         
         # 4. メンバー情報

@@ -30,6 +30,16 @@ from .exceptions import (
 
 
 class Client:
+    def get_user_profile(self, user_id: str) -> User:
+        """
+        UserProfile（表示名・アイコン）を取得
+        Args:
+            user_id: Auth0 ID
+        Returns:
+            User（display_name, avatar_url含む）
+        """
+        response = self._make_request("GET", f"/users/profile", params={"auth0_id": user_id})
+        return User.from_dict(response)
     """
     Janus SDKのメインクライアントクラス
     

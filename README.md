@@ -49,7 +49,12 @@ print(f"送信メッセージID: {message.id}")
 # メッセージ履歴取得
 messages = client.get_messages(new_channel.id, limit=10)
 for msg in messages:
-    print(f"{msg.author.name}: {msg.content}")
+    print(f"{msg.author.display_name} ({msg.author.id}): {msg.content}")
+    print(f"アイコンURL: {msg.author.avatar_url}")
+
+# ユーザープロフィール取得（UserProfile API）
+profile = client.get_user_profile("auth0|xxxxxxx")
+print(f"表示名: {profile.display_name}, アイコン: {profile.avatar_url}")
 
 # メンバー一覧取得
 members = client.get_members()
@@ -69,6 +74,7 @@ print(f"メンバー数: {len(members)}")
 | `client.send_message(...)`    | メッセージ送信             | `Message`        |
 | `client.get_messages(...)`    | メッセージ履歴取得         | `List[Message]`  |
 | `client.get_members()`        | メンバー一覧取得           | `List[Member]`   |
+| `client.get_user_profile(id)` | ユーザープロフィール取得   | `User`           |
 
 ---
 
@@ -143,9 +149,13 @@ class Message:
 class User:
     id: str  # Auth0 ID
     name: str
+    display_name: str  # 表示名（UserProfile）
     avatar_url: Optional[str]
     status: str  # "online", "offline", "away"
     roles: List[str]
+- メッセージのauthorはUserProfile（display_name, avatar_url, id）を持ちます
+- 表示名は`msg.author.display_name`で取得してください
+- ユーザープロフィールは`client.get_user_profile(user_id)`で取得できます
 ```
 
 ### Server

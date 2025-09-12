@@ -12,6 +12,7 @@ class User:
     """ユーザー情報"""
     id: str  # Auth0 ID
     name: str
+    display_name: Optional[str] = None
     avatar_url: Optional[str] = None
     status: str = "offline"  # "online", "offline", "away"
     roles: List[str] = None
@@ -25,6 +26,7 @@ class User:
         return cls(
             id=data.get("id", ""),
             name=data.get("name", ""),
+            display_name=data.get("display_name", data.get("name", "")),
             avatar_url=data.get("avatar_url"),
             status=data.get("status", "offline"),
             roles=data.get("roles", [])
@@ -117,11 +119,11 @@ class Message:
         author_data = data.get("author", {})
         if isinstance(author_data, str):
             # If author is a string, create a User with minimal info
-            author = User(id=author_data, name=author_data)
+            author = User(id=author_data, name=author_data, display_name=author_data)
         elif isinstance(author_data, dict):
             author = User.from_dict(author_data)
         else:
-            author = User(id="unknown", name="Unknown")
+            author = User(id="unknown", name="Unknown", display_name="Unknown")
         
         # Handle timestamp/createdAt field
         timestamp_str = data.get("timestamp") or data.get("createdAt")
