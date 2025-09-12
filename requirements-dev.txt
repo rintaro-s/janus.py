@@ -1,0 +1,25 @@
+# Janus SDK Tests
+pytest
+pytest-asyncio
+pytest-mock
+
+# Development Tools
+black
+flake8
+mypy
+isort
+
+# Documentation
+sphinx
+sphinx-rtd-theme
+
+# Optional Dependencies
+websockets
+aiosqlite
+psycopg2-binary
+mysql-connector-python
+aiohttp
+
+# Examples Dependencies  
+asyncio-mqtt
+python-dotenv

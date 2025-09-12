@@ -1,0 +1,2 @@
+[console_scripts]
+janus-quickstart = quickstart:main
