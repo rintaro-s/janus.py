@@ -2,6 +2,9 @@ import janus
 import requests
 import time
 import sys
+import os
+sys.path.insert(0, os.path.dirname(__file__))
+import janus
 
 # --- ユーザー設定 (ここを自分の環境に合わせて変更してください) ---
 
@@ -58,15 +61,19 @@ def main():
         sys.exit(1)
 
     try:
-        client = janus.Client(host=JANUS_HOST, token=JANUS_TOKEN, use_server_token=True)
+        client = janus.Client(host=JANUS_HOST, token=JANUS_TOKEN, use_server_token=True, debug=True)
         print(f"[DEBUG] client作成成功: {client}")
 
         try:
-            channels = client.get_channels()
-            print(f"[DEBUG] channels取得成功: {type(channels)} {repr(channels)}")
+            channels = client.get_channels(force_refresh=True)
+            print(f"[DEBUG] get_channels() の返り値: {repr(channels)} (型: {type(channels)})")
+            # APIレスポンスの生データを表示
+            raw_response = client._make_request("GET", f"/servers/{client._server_info.id}/channels")
+            print(f"[DEBUG] get_channels raw response: {repr(raw_response)} (型: {type(raw_response)})")
         except Exception as e:
             print(f"[DEBUG] get_channels() 失敗: {e}")
             raise
+
 
         ch = None
         # channelsをリストに変換
@@ -78,10 +85,15 @@ def main():
             print(f"❌ チャンネルリストの型が不正: {type(channels)}")
             sys.exit(1)
 
-        # チャンネル検索
+        # --- デバッグ: 中身を全部表示 ---
+        print("[DEBUG] channels_listの内容:")
+        for i, c in enumerate(channels_list):
+            print(f"  - 要素{i}: {repr(c)} (型: {type(c)})")
+
+        # --- チャンネル検索 ---
         for c in channels_list:
             if isinstance(c, int) or c is None:
-                print(f"⚠️ int/None型チャンネル発見: {c}")
+                print(f"⚠️ int/None型チャンネル発見: {c} → スキップ")
                 continue
 
             if isinstance(c, dict):
@@ -97,10 +109,14 @@ def main():
             print(f"❌ チャンネル '{TARGET_CHANNEL_NAME}' 未発見")
             sys.exit(1)
 
+        # --- チャンネルID取得 ---
         if isinstance(ch, dict):
             channel_id = ch.get("id")
+        elif hasattr(ch, "id"):
+            channel_id = ch.id
         else:
-            channel_id = getattr(ch, "id", None)
+            print(f"❌ チャンネルオブジェクトが不明形式: {repr(ch)} (型: {type(ch)})")
+            sys.exit(1)
 
         if not channel_id:
             print(f"❌ チャンネルID取得失敗: {repr(ch)}")

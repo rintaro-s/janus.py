@@ -6,14 +6,6 @@ Janus SDKは、Discord風チャットサーバー「Janus」のPython用クラ�
 
 ---
 
-## 🔧 インストール
-
-```bash
-pip install janus-sdk
-```
-
----
-
 ## 🚀 クイックスタート
 
 ```python
