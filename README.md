@@ -159,7 +159,3 @@ class Server:
     member_count: int
     created_at: datetime
 ```
-
----
-
-**Janus SDKはサーバートークン認証による安全なチャットAPIを提供します。\nREADMEのサンプルコードはすべて実際に動作します。\n未実装機能については今後のアップデートで対応予定です。**
